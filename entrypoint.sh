@@ -25,13 +25,13 @@ echo "START Running Jmeter on `date`"
 echo "JVM_ARGS=${JVM_ARGS}"
 echo "jmeter args=$@"
 
+[ -z "$TEST_PLAN" ] && TEST_PLAN=testplan
 # Keep entrypoint simple: we must pass the standard JMeter arguments
-jmeter $@
 echo "END Running Jmeter on `date`"
 
-#     -n \
-#    -t "/tests/${TEST_DIR}/${TEST_PLAN}.jmx" \
-#    -l "/tests/${TEST_DIR}/${TEST_PLAN}.jtl"
+# log to stdout for now
+jmeter -n -t "${TEST_PLAN}.jmx" -l "/dev/stdout"  $@
+
 # exec tail -f jmeter.log
 #    -D "java.rmi.server.hostname=${IP}" \
 #    -D "client.rmi.localport=${RMI_PORT}" \

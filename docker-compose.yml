@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  xslt:
+    image: uvwild/test-go-xslt:latest
+    restart: always
+    ports:
+      - "8090:8090"
+    environment:
+       VARIABLE: value
+
+  jmeter:
+    depends_on:
+      - xslt
+    image: uvwild/docker-jmeter:latest
+    restart: alwayspwd
+
+    environment:
+       VARIABLE: value

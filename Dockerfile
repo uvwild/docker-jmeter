@@ -34,6 +34,8 @@ ENV PATH $PATH:$JMETER_BIN
 
 # Entrypoint has same signature as "jmeter" command
 COPY entrypoint.sh /
+# test script
+COPY testplan.jmx ${JMETER_HOME}
 
 WORKDIR	${JMETER_HOME}
 
